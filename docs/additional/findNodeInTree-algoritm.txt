@@ -1,0 +1,7 @@
+pseudoCode:
+ 
+function findNode(node, id) {
+   
+}
+ 
+

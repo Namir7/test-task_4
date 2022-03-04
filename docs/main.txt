@@ -1,0 +1,19 @@
+Precedents:
+
+1. User creates new child node from another node
+2. User changes node text
+3. User deletes child node from another node
+4. User
+
+Domain Model List:
+
+Node
+RootNode
+
+Components: 
+
+Node
+
+Classes: 
+
+Node
