@@ -5,11 +5,15 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "postinstall": "npm run build",
+    "start": "node server.js"
   },
   "dependencies": {
     "@iconify/vue": "^3.1.4",
     "core-js": "^3.8.3",
+    "express": "^4.17.3",
+    "serve-static": "^1.14.2",
     "tinykeys": "^1.4.0",
     "uuid": "^8.3.2",
     "vue": "^3.2.13",
