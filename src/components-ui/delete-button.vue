@@ -3,6 +3,7 @@
     class="app-button delete-button"
     @click="removeNode"
     :disabled="isDiabled"
+    title="ctrl+d"
   >
     <icon icon="ant-design:delete-outlined" width="2rem" height="2rem" />
   </button>

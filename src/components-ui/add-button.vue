@@ -1,11 +1,11 @@
 <template>
-  <button class="app-button add-button" @click="addNode">
+  <button class="app-button add-button" @click="addNode" title="ctrl+p">
     <icon icon="fluent:add-square-20-regular" width="2rem" height="2rem" />
   </button>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "vue";
+import { defineComponent } from "vue";
 
 import { useStore } from "@/store";
 
@@ -17,13 +17,10 @@ export default defineComponent({
     const addNode = () => {
       const parentId = store.state.nodes.activeNode.id;
 
-      const node = store.commit("nodes/ADD_NODE", {
+      store.commit("nodes/ADD_NODE", {
         parentId,
         label: "new value",
       });
-
-      // console.log("node: ");
-      // console.log(node);
     };
 
     return {

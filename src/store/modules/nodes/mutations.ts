@@ -2,26 +2,31 @@ import { MutationTree } from "vuex";
 
 import { IMutations, IState } from "./interfaces";
 import { Node } from "@/factories/Node";
+import { INode } from "@/interfaces/INode";
 import utils from "@/utils";
 
 export const mutations: MutationTree<IState> & IMutations = {
+  SET_NODES: (state: IState, payload: { list: INode[] }) => {
+    state.nodesList = payload.list;
+  },
+
   ADD_NODE: (
     state: IState,
     payload: { parentId: string; label: string }
   ): void => {
-    // immutable code
-
     const node = new Node(payload.label, payload.parentId);
 
     state.nodesList.push(node);
 
-    const parentNode = utils.findNodeById(payload.parentId, state.nodesList);
+    if (payload.parentId) {
+      const parentNode = utils.findNodeById(payload.parentId, state.nodesList);
 
-    parentNode.addChild(node.id);
+      parentNode.addChild(node.id);
+    }
 
     state.lastNewNode = node;
 
-    // mutable code
+    // mutable solution
 
     // const node = new Node(payload.label, payload.parentId);
     // state.nodesList.push(node);
@@ -49,6 +54,7 @@ export const mutations: MutationTree<IState> & IMutations = {
   },
 
   CHANGE_ACTIVE: (state: IState, payload: { active: string }) => {
+    if (!payload.active) return;
     state.activeNode =
       state.nodesList.find((node) => node.id === payload.active) ||
       state.activeNode;

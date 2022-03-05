@@ -4,10 +4,15 @@
 </template>
 
 <script lang="ts">
+import { defineComponent, onMounted } from "vue";
+
 import NodeTree from "@/components/NodeTree.vue";
 import ActionsPanel from "@/components/ActionsPanel.vue";
 
-import { defineComponent } from "vue";
+import { useStore } from "@/store";
+import { bindKeys } from "@/composables/App/bindKeys";
+import { createExampleStoreStructure } from "@/composables/App/createExampleStoreStructure";
+import { subscribeToNodesListChages } from "@/composables/App/subscribeToNodesListChages";
 
 export default defineComponent({
   name: "App",
@@ -15,7 +20,28 @@ export default defineComponent({
     NodeTree,
     ActionsPanel,
   },
-  mounted() {},
+  setup() {
+    onMounted(() => {
+      bindKeys();
+    });
+
+    const store = useStore();
+
+    createExampleStoreStructure();
+
+    subscribeToNodesListChages();
+
+    console.log(`
+    keybindings:
+    
+    ctrl + p -> create node
+    ctrl + d -> delete node
+    ctrl + arrow -> move`);
+
+    return {
+      store,
+    };
+  },
 });
 </script>
 

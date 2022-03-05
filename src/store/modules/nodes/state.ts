@@ -1,12 +1,12 @@
 import { IState } from "./interfaces";
-import nodesList from "@/data/nodes";
+import rootNode from "@/data/rootNode";
 
 export const state: IState = {
-  nodesList,
+  nodesList: [rootNode],
 
-  activeNode: nodesList[0],
+  activeNode: rootNode,
 
-  rootNode: nodesList[0],
+  rootNode,
 
-  lastNewNode: nodesList[0],
+  lastNewNode: rootNode,
 };

@@ -23,7 +23,6 @@ export default defineComponent({
     const activeNode = computed(() => store.state.nodes.activeNode);
 
     watch(activeNode, () => {
-      store.commit("edit/CHANGE_VALUE", { value: activeNode.value.label });
       input.value.focus();
     });
 
