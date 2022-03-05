@@ -43,7 +43,6 @@ export default defineComponent({
 
     const changeActive = () => {
       store.commit("nodes/CHANGE_ACTIVE", { active: props.node.id });
-      store.commit("edit/CHANGE_VALUE", { value: props.node.label });
     };
 
     return {

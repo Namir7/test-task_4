@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch } from "vue";
+import { computed, defineComponent, Ref, ref, watch } from "vue";
 
 import { useStore } from "@/store";
 
@@ -18,7 +18,7 @@ export default defineComponent({
   setup() {
     const store = useStore();
 
-    const input = ref(null);
+    const input: Ref = ref(null);
 
     const activeNode = computed(() => store.state.nodes.activeNode);
 

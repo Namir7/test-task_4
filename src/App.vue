@@ -12,7 +12,8 @@ import ActionsPanel from "@/components/ActionsPanel.vue";
 import { useStore } from "@/store";
 import { bindKeys } from "@/composables/App/bindKeys";
 import { createExampleStoreStructure } from "@/composables/App/createExampleStoreStructure";
-import { subscribeToNodesListChages } from "@/composables/App/subscribeToNodesListChages";
+import { useWatchers } from "@/composables/App/useWatchers";
+import { useSubscriptions } from "@/composables/App/useSubscriptions";
 
 export default defineComponent({
   name: "App",
@@ -29,7 +30,10 @@ export default defineComponent({
 
     createExampleStoreStructure();
 
-    subscribeToNodesListChages();
+    useWatchers();
+    useSubscriptions();
+
+    store.commit("bin/SET_BIN", { nodesList: store.state.nodes.nodesList });
 
     console.log(`
     keybindings:
