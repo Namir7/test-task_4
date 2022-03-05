@@ -1,11 +1,11 @@
 <template>
-  <button class="app-button" @click="addNode">
+  <button class="app-button add-button" @click="addNode">
     <icon icon="fluent:add-square-20-regular" width="2rem" height="2rem" />
   </button>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
 
 import { useStore } from "@/store";
 
@@ -22,8 +22,8 @@ export default defineComponent({
         label: "new value",
       });
 
-      console.log("node: ");
-      console.log(node);
+      // console.log("node: ");
+      // console.log(node);
     };
 
     return {

@@ -6,8 +6,12 @@
 
       background-color: white;
 
+      font-weight: bold;
+      color: gray;
+      
       &--active {
-         background-color: #0ff0f0;
+         background-color: #771967be;
+         color: white;
       }
 
       cursor: pointer;

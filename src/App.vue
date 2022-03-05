@@ -15,6 +15,7 @@ export default defineComponent({
     NodeTree,
     ActionsPanel,
   },
+  mounted() {},
 });
 </script>
 

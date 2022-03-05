@@ -8,6 +8,12 @@ const deleteNodeWithDescendants = (id: string, list: INode[]) => {
 
     listCopy = listCopy.filter((node) => node.id !== id);
 
+    const parentNode = findNodeById(node.parent as string, listCopy);
+
+    if (parentNode) {
+      parentNode.removeChild(node.id);
+    }
+
     node.children.forEach((childId) => {
       _deleteNode(childId);
     });

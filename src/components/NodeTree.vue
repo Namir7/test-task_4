@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { computed, defineComponent } from "vue";
+import { computed, defineComponent, watch } from "vue";
 
 import NodeItem from "@/components/NodeItem.vue";
 
@@ -23,6 +23,14 @@ export default defineComponent({
 
     const rootNode = computed(() => store.state.nodes.rootNode);
 
+    watch(
+      computed(() => store.state.nodes.lastNewNode),
+      (val) => {
+        store.commit("nodes/CHANGE_ACTIVE", { active: val.id });
+      },
+      { deep: true }
+    );
+
     return {
       rootNode,
     };
@@ -33,6 +41,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .wrapper {
   padding: 16px;
-  padding-top: 35%;
+  padding-top: 35;
+
+  align-self: center;
 }
 </style>

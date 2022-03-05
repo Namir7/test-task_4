@@ -20,6 +20,6 @@ export class Node implements INode {
   }
 
   removeChild(id: string) {
-    this.children.filter((child) => child !== id);
+    this.children = this.children.filter((child) => child !== id);
   }
 }

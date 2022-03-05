@@ -7,4 +7,6 @@ export const state: IState = {
   activeNode: nodesList[0],
 
   rootNode: nodesList[0],
+
+  lastNewNode: nodesList[0],
 };

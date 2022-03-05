@@ -1,5 +1,9 @@
 <template>
-  <button class="app-button" @click="removeNode" :disabled="isDiabled">
+  <button
+    class="app-button delete-button"
+    @click="removeNode"
+    :disabled="isDiabled"
+  >
     <icon icon="ant-design:delete-outlined" width="2rem" height="2rem" />
   </button>
 </template>
@@ -21,11 +25,6 @@ export default defineComponent({
     const removeNode = () => {
       store.commit("nodes/REMOVE_NODE", {
         id: store.state.nodes.activeNode.id,
-        parentId: store.state.nodes.activeNode.parent,
-      });
-
-      store.commit("nodes/CHANGE_ACTIVE", {
-        active: store.state.nodes.activeNode.parent,
       });
     };
 

@@ -32,9 +32,9 @@ export default defineComponent({
     const store = useStore();
 
     const children = computed(() =>
-      props.node.children
-        .map((nodeId) => store.getters["nodes/getNodeById"](nodeId))
-        .filter((node) => node !== null)
+      props.node.children.map((nodeId) =>
+        store.getters["nodes/getNodeById"](nodeId)
+      )
     );
 
     const isActive = computed(
