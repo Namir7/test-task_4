@@ -1,5 +1,5 @@
 <template>
-  <!-- <hint-panel /> -->
+  <hint-panel />
   <actions-panel />
   <node-tree />
 </template>
@@ -37,13 +37,6 @@ export default defineComponent({
     useSubscriptions();
 
     store.commit("bin/SET_BIN", { nodesList: store.state.nodes.nodesList });
-
-    console.log(`
-    keybindings:
-    
-    ctrl + p -> create node
-    ctrl + d -> delete node
-    ctrl + arrow -> move`);
 
     return {
       store,

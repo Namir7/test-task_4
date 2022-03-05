@@ -7,8 +7,6 @@ import utils from "@/utils";
 
 export const mutations: MutationTree<IState> & IMutations = {
   SET_NODES: (state: IState, payload: { list: INode[] }) => {
-    console.log("set nodes");
-
     state.nodesList = payload.list;
   },
 

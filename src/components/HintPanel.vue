@@ -5,56 +5,113 @@
       icon="codicon:info"
       width="1.5rem"
       heigth="1.5rem"
+      @mousemove="show"
     />
-    <h2 class="hint-panel__title">Keybindings:</h2>
+    <fade-transition>
+      <div class="hint-panel__main" v-show="isVisible" @mouseleave="not_show">
+        <h2 class="hint-panel__title">Keybindings</h2>
 
-    <div class="">
-      <!-- <ul>
-        <li></li>
-      </ul> -->
-    </div>
+        <div class="hint-panel__description">
+          <ul>
+            <li>
+              <p class="hint-panel__text">Create record</p>
+              <span class="hint-panel__text--code"> Ctrl + p</span>
+            </li>
+            <li>
+              <p class="hint-panel__text">Delete record</p>
+              <span class="hint-panel__text--code"> Ctrl + d</span>
+            </li>
+            <li>
+              <p class="hint-panel__text">Move between records</p>
+              <span class="hint-panel__text--code"> Ctrl + arrow</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </fade-transition>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 
+import FadeTransition from "@/components-ui/fade-transition.vue";
+
 export default defineComponent({
   name: "HintPanel",
+  components: {
+    FadeTransition,
+  },
+  data() {
+    return {
+      isVisible: false,
+    };
+  },
+  methods: {
+    show() {
+      this.isVisible = true;
+    },
+    not_show() {
+      this.isVisible = false;
+    },
+  },
 });
 </script>
 
 <style lang="scss" scoped>
 .hint-panel {
-  position: relative;
+  .hint-panel__main {
+    width: 13rem;
 
-  width: 30rem;
-  height: 20rem;
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  position: relative;
-  z-index: 1;
-  background: inherit;
-  overflow: hidden;
+    padding: 1.5rem;
 
-  &:before {
-    content: "";
+    border-radius: 1rem;
+
     position: absolute;
-    background: inherit;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
-    filter: blur(10px);
-    margin: -20px;
+    top: 1.5rem;
+    left: 1.5rem;
+
+    z-index: 10;
+
+    background-color: white;
   }
 
-  & .hint-panel__icon {
+  .hint-panel__title {
+    margin-bottom: 3rem;
+
+    font-weight: bold;
+  }
+
+  .hint-panel__text {
+    &--code {
+      font-family: "Inconsolata", monospace;
+    }
+  }
+
+  .hint-panel__icon {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 1.75rem;
+    left: 1.75rem;
+
+    z-index: 15;
+
+    cursor: pointer;
+  }
+
+  li {
+    width: 100%;
+    & p {
+      margin-bottom: 0.5rem;
+
+      text-align: start;
+    }
+    & span {
+      display: block;
+
+      margin-bottom: 0.7rem;
+
+      text-align: start;
+    }
   }
 }
 </style>
