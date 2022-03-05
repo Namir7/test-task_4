@@ -1,19 +1,15 @@
-// import { NodeType } from "@/types/NodeType";
-
 export interface INode {
   id: string;
 
-  value: string;
+  label: string;
 
-  // meta: {
-  //   type: NodeType;
-  // };
+  children: string[];
 
-  children: INode[];
+  parent: string | null;
 
-  // editValue: () => void;
+  editLabel: (label: string) => void;
 
-  // addChild: (node: Node) => void;
+  addChild: (id: string) => void;
 
-  // deleteChild: () => void;
+  removeChild: (id: string) => void;
 }

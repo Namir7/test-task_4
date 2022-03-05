@@ -1,0 +1,16 @@
+.app-button {
+   cursor: pointer;
+
+   width: fit-content;
+   height: fit-content;
+   padding: 0;
+
+   background-color: white;
+   border: none;
+   border-radius: 5px;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   outline: none;
+}

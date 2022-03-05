@@ -1,22 +1,28 @@
 <template>
-  <ul class="mindmap">
-    <node-item :node="rootNode" />
-  </ul>
+  <div class="wrapper">
+    <div class="mindmap">
+      <node-item :node="rootNode" />
+    </div>
+  </div>
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
 
 import NodeItem from "@/components/NodeItem.vue";
 
-import rootNode from "@/data/rootNode";
+import { useStore } from "@/store";
 
 export default defineComponent({
   name: "NodeTree",
   components: {
     NodeItem,
   },
-  data() {
+  setup() {
+    const store = useStore();
+
+    const rootNode = computed(() => store.state.nodes.rootNode);
+
     return {
       rootNode,
     };
@@ -24,4 +30,9 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.wrapper {
+  padding: 16px;
+  padding-top: 35%;
+}
+</style>

@@ -1,9 +1,18 @@
 .mindmap {
-   article {
+   .node-item__label {
       padding: 8px;
       border: 1px solid black;
+      border-radius: 0.25rem;
+
+      background-color: white;
+
+      &--active {
+         background-color: #0ff0f0;
+      }
+
+      cursor: pointer;
    }
-   li {
+   .node-item {
       list-style: none;
       display: flex;
       align-items: center;
@@ -12,7 +21,7 @@
       line-height: 1;
       position: relative;
 
-      & > ul:before {
+      & > .node-item__children:before {
          content: "";
          border: 1px solid black;
          border-top: none;
@@ -35,6 +44,7 @@
          position: absolute;
          left: calc(-16px - 1px);
       }
+
       &:after {
          content: "";
          border: 1px solid black;
@@ -54,12 +64,13 @@
          bottom: 50%;
       }
 
-      ul {
+      .node-item__children {
          padding: 0 0 0 16px;
          position: relative;
       }
    }
-   & > li {
+
+   & > .node-item {
       &:after,
       &:before {
          display: none;

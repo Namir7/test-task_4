@@ -1,12 +1,15 @@
 import { InjectionKey } from "vue";
 import { createStore, useStore as baseUseStore, Store } from "vuex";
 
-import nodesTree from "./modules/nodesTree";
+import nodes from "./modules/nodes";
+import edit from "./modules/edit";
 
-import { IState as NodesTreeState } from "./modules/nodesTree/interfaces";
+import { IState as NodesTreeState } from "./modules/nodes/interfaces";
+import { IState as EditState } from "./modules/edit/interfaces";
 
 export interface IRootState {
-  map: NodesTreeState;
+  nodes: NodesTreeState;
+  edit: EditState;
 }
 
 export const key: InjectionKey<Store<IRootState>> = Symbol();
@@ -17,7 +20,8 @@ export function useStore() {
 
 export const store = createStore<IRootState>({
   modules: {
-    nodesTree,
+    nodes,
+    edit,
   },
   strict: true,
 });
