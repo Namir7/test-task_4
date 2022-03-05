@@ -1,0 +1,35 @@
+Precedents:
+
+1. User creates new child node from another node
+2. User changes node text
+3. User deletes child node from another node
+
+Domain Model List:
+
+Node
+RootNode
+ActiveNode
+
+Components: 
+
+Node
+
+Classes:
+
+Node
+
+
+Storage:
+
+nodesTree: 
+   state:
+      - tree
+   mutations:
+      - add_node: (parentNode, node) => void
+      - delete_node: (parentNode, id) => void
+      - edit_node: (node, label) => void
+
+
+Tasks:
+
+1. Add functionality
