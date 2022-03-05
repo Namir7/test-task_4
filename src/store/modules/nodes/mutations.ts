@@ -7,6 +7,8 @@ import utils from "@/utils";
 
 export const mutations: MutationTree<IState> & IMutations = {
   SET_NODES: (state: IState, payload: { list: INode[] }) => {
+    console.log("set nodes");
+
     state.nodesList = payload.list;
   },
 
@@ -16,26 +18,15 @@ export const mutations: MutationTree<IState> & IMutations = {
   ): void => {
     const node = new Node(payload.label, payload.parentId);
 
-    state.nodesList.push(node);
-
     if (payload.parentId) {
       const parentNode = utils.findNodeById(payload.parentId, state.nodesList);
 
       parentNode.addChild(node.id);
     }
 
+    state.nodesList = [...state.nodesList, node];
+
     state.lastNewNode = node;
-
-    // mutable solution
-
-    // const node = new Node(payload.label, payload.parentId);
-    // state.nodesList.push(node);
-    // const parentNode =
-    //   state.nodesList[
-    //     state.nodesList.findIndex((node) => node.id === payload.parentId)
-    //   ];
-    // parentNode.children.push(node.id);
-    // state.lastNewNode = node;
   },
 
   REMOVE_NODE: (state: IState, payload: { id: string }) => {

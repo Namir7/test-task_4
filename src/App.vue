@@ -1,4 +1,5 @@
 <template>
+  <!-- <hint-panel /> -->
   <actions-panel />
   <node-tree />
 </template>
@@ -8,6 +9,7 @@ import { defineComponent, onMounted } from "vue";
 
 import NodeTree from "@/components/NodeTree.vue";
 import ActionsPanel from "@/components/ActionsPanel.vue";
+import HintPanel from "@/components/HintPanel.vue";
 
 import { useStore } from "@/store";
 import { bindKeys } from "@/composables/App/bindKeys";
@@ -20,6 +22,7 @@ export default defineComponent({
   components: {
     NodeTree,
     ActionsPanel,
+    HintPanel,
   },
   setup() {
     onMounted(() => {

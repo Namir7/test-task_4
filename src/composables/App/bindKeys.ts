@@ -24,6 +24,12 @@ export const bindKeys = () => {
       });
     },
 
+    // NOT_IMPLEMENTED
+    // "Control+z": (e) => {
+    //   e.preventDefault();
+    //   store.dispatch("bin/cancelAction");
+    // },
+
     "Control+ArrowUp": () => {
       store.commit("nodes/CHANGE_ACTIVE", {
         active: store.getters["nodes/siblings"](store.state.nodes.activeNode)
